@@ -1,0 +1,697 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ALSGLC Exhibition</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: exercise-book exhibition. Wide hero with a museum-style placard, perspective tabs, a vote box. */
+:root {
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --ink: #142033;
+  --muted: #55627a;
+  --line: #d9dfe8;
+  --rule: #cfe0ef;
+  --accent: #1f6f78;      /* teal ink */
+  --accent-ink: #ffffff;
+  --marker: #f6c945;      /* highlighter */
+  --pen: #c8372d;         /* red pen */
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1724; --surface: #172236; --ink: #eaf0f8; --muted: #9eacc4; --line: #2a3a55; --rule: #1d2c45;
+    --accent: #5fc3cc; --accent-ink: #0f1724; --marker: #e0b52c; --pen: #ff7a6e; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1724; --surface: #172236; --ink: #eaf0f8; --muted: #9eacc4; --line: #2a3a55; --rule: #1d2c45;
+  --accent: #5fc3cc; --accent-ink: #0f1724; --marker: #e0b52c; --pen: #ff7a6e; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 400 16px/1.6 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.08; margin: 0; letter-spacing: -0.015em; }
+p { margin: 0; }
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1080px; margin-inline: auto; }
+.mono { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+/* nav */
+nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; flex-wrap: wrap; }
+.brand { font-family: var(--font-display); font-weight: 800; font-size: 20px; letter-spacing: 0.04em; text-decoration: none; color: var(--ink); }
+.links { display: flex; gap: 6px 20px; flex-wrap: wrap; }
+.links a { color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 500; padding: 4px 0; border-bottom: 2px solid transparent; }
+.links a:hover { border-color: var(--marker); }
+
+/* hero */
+.hero {
+  display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; align-items: end;
+  padding-block: 56px 64px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 39px, var(--rule) 39px 40px);
+  border-top: 1px solid var(--line);
+}
+.hero h1 { font-size: clamp(2.4rem, 6.4vw, 4.8rem); font-weight: 800; margin-top: 14px; }
+.hl { background: linear-gradient(transparent 58%, var(--marker) 58% 92%, transparent 92%); padding-inline: 2px; }
+.q { color: var(--pen); }
+.hero .lede { margin-top: 22px; max-width: 54ch; font-size: 18px; color: var(--muted); background: var(--bg); display: inline; box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 2px 0; }
+.placard { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 20px; display: grid; gap: 14px; }
+.placard dl { margin: 0; display: grid; gap: 12px; }
+.placard dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.placard dd { margin: 2px 0 0; font-weight: 600; }
+.placard .grp { font-family: var(--font-display); font-weight: 800; font-size: 34px; letter-spacing: 0.06em; line-height: 1; }
+
+/* sections */
+section { padding-block: 64px; border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 10px; margin-bottom: 32px; max-width: 70ch; }
+.sec-head h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; }
+.sec-head p { color: var(--muted); }
+
+.matters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.matters div { background: var(--surface); border: 1px solid var(--line); padding: 20px; border-radius: 4px; }
+.matters strong { font-family: var(--font-display); font-size: 20px; display: block; margin-bottom: 6px; }
+.matters span { color: var(--muted); font-size: 15px; }
+
+/* tabs */
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+.tab { font: 600 15px var(--font-body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 10px 18px; cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.tab small { font-family: var(--font-mono); font-size: 11px; opacity: .7; margin-left: 6px; }
+.qa { display: grid; gap: 28px; }
+.qa-item { display: grid; gap: 12px; }
+.qa-item h3 { font-size: 20px; font-weight: 700; max-width: 62ch; }
+.qa-item .qn { color: var(--pen); font-family: var(--font-mono); font-size: 13px; margin-right: 8px; }
+.answers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ans { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; display: grid; gap: 8px; align-content: start; min-width: 0; overflow-wrap: anywhere; }
+.ans p { font-size: 15px; }
+
+/* themes */
+.themes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.theme { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.theme h3 { font-size: 21px; }
+.theme p { color: var(--muted); font-size: 15px; }
+.theme blockquote { margin: 4px 0 0; padding-left: 14px; border-left: 3px solid var(--marker); font-size: 15px; }
+.theme cite { display: block; font-style: normal; margin-top: 4px; }
+
+/* vote */
+.vote { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: clamp(20px, 4vw, 36px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
+.vote h3 { font-size: clamp(1.4rem, 3vw, 1.9rem); margin-bottom: 18px; }
+.opts { display: grid; gap: 10px; }
+.opt { text-align: left; font: 500 16px var(--font-body); color: var(--ink); background: var(--bg); border: 2px solid var(--line); border-radius: 4px; padding: 14px 16px; cursor: pointer; display: flex; gap: 12px; align-items: baseline; }
+.opt:hover { border-color: var(--accent); }
+.opt[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
+.opt .mark { font-family: var(--font-mono); font-size: 13px; opacity: .8; }
+.note { margin-top: 14px; font-size: 14px; color: var(--muted); min-height: 1.6em; }
+.results { display: grid; gap: 16px; align-content: start; }
+.bar-row { display: grid; gap: 6px; }
+.bar-row .lab { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; font-weight: 500; }
+.bar-row .lab span:last-child { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.track { height: 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
+.fill { height: 100%; background: var(--accent); width: 0; transition: width .5s ease; }
+.fill.mine { background: var(--pen); }
+.total { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+
+/* spin check */
+.spin { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.trick { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 22px; display: grid; gap: 18px; align-content: start; min-width: 0; }
+.trick h3 { font-size: 22px; }
+.trick .how { color: var(--muted); font-size: 15px; }
+.pair { display: grid; gap: 10px; }
+.say, .real { padding: 12px 14px; border-radius: 4px; font-size: 15px; display: grid; gap: 4px; overflow-wrap: anywhere; }
+.say { border: 1px dashed var(--pen); }
+.real { border: 1px solid var(--accent); }
+.say .mono { color: var(--pen); }
+.real .mono { color: var(--accent); }
+
+/* source evaluation */
+.eval { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.crit { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 22px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.crit header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.crit h3 { font-size: 22px; }
+.crit .q { font-size: 15px; color: var(--muted); }
+.crit ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 15px; }
+.crit li { overflow-wrap: anywhere; }
+.crit .fix { border-top: 1px dashed var(--line); padding-top: 12px; font-size: 14px; color: var(--muted); }
+.verdict { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; border: 1px solid currentColor; }
+.verdict.ok { color: var(--accent); }
+.verdict.warn { color: var(--pen); }
+
+/* method */
+.method { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 22px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card h3 { font-size: 20px; }
+.card ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+.card li { overflow-wrap: anywhere; }
+.card p { color: var(--muted); font-size: 15px; }
+
+/* team */
+.team { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.member { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 16px; display: grid; gap: 6px; }
+.member b { font-family: var(--font-display); font-size: 17px; line-height: 1.2; }
+.member i { font-style: normal; color: var(--muted); font-size: 14px; border-bottom: 1px dashed var(--line); padding-bottom: 2px; }
+
+footer { border-top: 1px solid var(--line); padding-block: 32px 48px; color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 40px 48px; }
+  .vote, .method, .themes, .spin, .eval { grid-template-columns: minmax(0, 1fr); }
+  .matters, .answers { grid-template-columns: minmax(0, 1fr); }
+  section { padding-block: 48px; }
+}
+@media (prefers-reduced-motion: reduce) { .fill { transition: none; } }
+</style>
+
+<div class="wrap">
+  <nav aria-label="Main">
+    <a class="brand" href="#top">ALSGLC</a>
+    <div class="links">
+      <a href="#why">Why it matters</a>
+      <a href="#voices">Voices</a>
+      <a href="#patterns">Patterns</a>
+      <a href="#spin">Manipulation Methods</a>
+      <a href="#eval">Source Evaluation</a>
+      <a href="#vote">Vote</a>
+      <a href="#method">Method</a>
+      
+    </div>
+  </nav>
+</div>
+
+<main id="top">
+  <div class="wrap">
+    <header class="hero">
+      <div>
+        <span class="mono">Exhibition track</span>
+        <h1>Should school give <span class="hl">free tuition</span> for struggling students<span class="q">?</span></h1>
+        <p><span class="lede">We asked students, teachers and parents. Read what they told us, then cast your own vote.</span></p>
+      </div>
+      <aside class="placard" aria-label="Exhibit details">
+        <div class="grp">ALSGLC</div>
+        <dl>
+          <div><dt>Method</dt><dd>Survey</dd></div>
+          <div><dt>Perspectives</dt><dd>Students, Teachers, Parents</dd></div>
+          <div><dt>Responses</dt><dd>9 (3 per group)</dd></div>
+          <div><dt>Visitor feature</dt><dd>Voting Box</dd></div>
+        </dl>
+      </aside>
+    </header>
+  </div>
+
+  <div class="wrap">
+    <section id="why">
+      <div class="sec-head">
+        <span class="mono">Why does this issue matter?</span>
+        <h2>Marks in school shape what comes after</h2>
+        <p>Academic performance directly affects a student's long-term educational attainment, future employment opportunities and mental well-being.</p>
+      </div>
+      <div class="matters">
+        <div><strong>Educational attainment</strong><span>Falling behind early makes each later year harder.</span></div>
+        <div><strong>Future employment</strong><span>Results open or close doors after school.</span></div>
+        <div><strong>Mental well-being</strong><span>Struggling in class affects confidence and stress.</span></div>
+      </div>
+    </section>
+
+    <section id="voices">
+      <div class="sec-head">
+        <span class="mono">Primary research · Survey</span>
+        <h2>What three groups told us</h2>
+        <p>Each group answered five questions. Every card below is one respondent's answer, shown as written.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Perspective"></div>
+      <div class="qa" id="qa" role="tabpanel"></div>
+    </section>
+
+    <section id="patterns">
+      <div class="sec-head">
+        <span class="mono">Across all three groups</span>
+        <h2>Where the answers meet, and where they pull apart</h2>
+      </div>
+      <div class="themes">
+        <article class="theme">
+          <h3>Free tuition could lift a cost</h3>
+          <p>Students and parents both pointed to money. Private tutoring is expensive, and school-run sessions would free up the family budget.</p>
+          <blockquote>It would cut monthly private tuition costs, freeing up money for books, internet access, or basic household needs.<cite class="mono">Parent</cite></blockquote>
+        </article>
+        <article class="theme">
+          <h3>Time and rest are the main worry</h3>
+          <p>Every group raised it. Sessions after a full school day could eat into homework, hobbies, family time and sleep.</p>
+          <blockquote>Sometimes, there's barely any free time to do other activities or rest.<cite class="mono">Student</cite></blockquote>
+        </article>
+        <article class="theme">
+          <h3>Schools may already have what it takes</h3>
+          <p>Teachers described using the lounge and teacher room, and existing materials. A parent noted school teachers already know the syllabus.</p>
+          <blockquote>Yes, because they use lounge for 30 minutes free tuition.<cite class="mono">Teacher</cite></blockquote>
+        </article>
+        <article class="theme">
+          <h3>Who should qualify is still open</h3>
+          <p>Parents suggested low income, proven academic gaps, diagnostic tests and attendance. A student argued support should rest on need alone.</p>
+          <blockquote>Academic support should be based purely on educational need rather than income level to ensure equal learning opportunities.<cite class="mono">Student</cite></blockquote>
+        </article>
+        <article class="theme" style="grid-column: 1 / -1;">
+          <h3>Small comforts make sessions workable</h3>
+          <p>Respondents asked for meals or a snack break, small classes, patient teachers, a safe way home and sessions right after school instead of late at night.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="spin">
+      <div class="sec-head">
+        <span class="mono">Manipulation Methods</span>
+        <h2>Manipulation techniques in the answers</h2>
+        <p>People do not always mean to mislead, but everyday opinions can still lean on tricks of language and selection. Here are four techniques as they appear in real answers from our survey. This is our reading, and another reader might judge some of them differently.</p>
+      </div>
+      <div class="spin">
+        <article class="trick">
+          <h3>Cherry-picking</h3>
+          <p class="how">Naming only the facts that help one side.</p>
+          <div class="pair">
+            <span class="mono">Student 2 · Q3</span>
+            <div class="say"><span class="mono">Their answer</span>&ldquo;It's free and it provides me knowledge&rdquo;</div>
+            <div class="real"><span class="mono">Why it fits</span>Lists only the benefit. It leaves out the cost to the school and the student's own time.</div>
+          </div>
+          <div class="pair">
+            <span class="mono">Teacher 3 · Q5</span>
+            <div class="say"><span class="mono">Their answer</span>&ldquo;no since they already have the materials for it&rdquo;</div>
+            <div class="real"><span class="mono">Why it fits</span>Counts the materials but skips teacher time, electricity and supervision, which other teachers raised.</div>
+          </div>
+          <div class="pair">
+            <span class="mono">Parent 1 · Q4</span>
+            <div class="say"><span class="mono">Their answer</span>&ldquo;Yes, because school teachers already know the syllabus and can target the exact foundational topics a student missed.&rdquo;</div>
+            <div class="real"><span class="mono">Why it fits</span>Gives the strongest advantage and says nothing about tired teachers or students after a long day.</div>
+          </div>
+        </article>
+        <article class="trick">
+          <h3>Loaded language</h3>
+          <p class="how">Choosing emotional words that steer the reader's feelings.</p>
+          <div class="pair">
+            <span class="mono">Parent 3 · Q2</span>
+            <div class="say"><span class="mono">Their answer</span>&ldquo;My biggest worry would be my child getting overtired, hungry, and burned out after a long school day&rdquo;</div>
+            <div class="real"><span class="mono">Why it fits</span>&ldquo;Overtired, hungry, and burned out&rdquo; is a stack of strong words that paints the sessions as harmful.</div>
+          </div>
+          <div class="pair">
+            <span class="mono">Parent 3 · Q5</span>
+            <div class="say"><span class="mono">Their answer</span>&ldquo;It would take a huge weight off our monthly budget&rdquo;</div>
+            <div class="real"><span class="mono">Why it fits</span>&ldquo;Huge weight&rdquo; makes the saving sound heavier than the answer shows. No amount is given.</div>
+          </div>
+          <div class="pair">
+            <span class="mono">Parent 2 · Q1</span>
+            <div class="say"><span class="mono">Their answer</span>&ldquo;ensuring spots go to struggling learners who will actually show up and put in the effort&rdquo;</div>
+            <div class="real"><span class="mono">Why it fits</span>&ldquo;Actually show up and put in the effort&rdquo; suggests other struggling students would not.</div>
+          </div>
+        </article>
+        <article class="trick">
+          <h3>Exaggeration</h3>
+          <p class="how">Making a claim bigger or more certain than the evidence allows.</p>
+          <div class="pair">
+            <span class="mono">Student 3 · Q1</span>
+            <div class="say"><span class="mono">Their answer</span>&ldquo;Yes, it can decrease the rate of dropouts in schools&rdquo;</div>
+            <div class="real"><span class="mono">Why it fits</span>A big outcome stated as fact, with no evidence given for dropout rates.</div>
+          </div>
+          <div class="pair">
+            <span class="mono">Teacher 3 · Q1</span>
+            <div class="say"><span class="mono">Their answer</span>&ldquo;yes, everyone will have same opportunity because its free&rdquo;</div>
+            <div class="real"><span class="mono">Why it fits</span>Assumes free means equal. Time, transport and tiredness could still stop some students attending.</div>
+          </div>
+          <div class="pair">
+            <span class="mono">Teacher 1 · Q5</span>
+            <div class="say"><span class="mono">Their answer</span>&ldquo;yes, because of their electricity bills&rdquo;</div>
+            <div class="real"><span class="mono">Why it fits</span>Turns one running cost into a reason the whole programme creates unnecessary expenses.</div>
+          </div>
+        </article>
+        <article class="trick">
+          <h3>Omission</h3>
+          <p class="how">Leaving out the detail needed to judge the answer.</p>
+          <div class="pair">
+            <span class="mono">Teacher 1 · Q1</span>
+            <div class="say"><span class="mono">Their answer</span>&ldquo;yes, because same education&rdquo;</div>
+            <div class="real"><span class="mono">Why it fits</span>Does not say what is the same or how free tuition makes it so.</div>
+          </div>
+          <div class="pair">
+            <span class="mono">Student 3 · Q2</span>
+            <div class="say"><span class="mono">Their answer</span>&ldquo;No i dont&rdquo;</div>
+            <div class="real"><span class="mono">Why it fits</span>Gives no reason and no example, so the reader cannot check it.</div>
+          </div>
+          <div class="pair">
+            <span class="mono">Student 2 · Q5</span>
+            <div class="say"><span class="mono">Their answer</span>&ldquo;I believe it should be free for everyone but I believe schools wouldnt agree as it takes school resources to do tuitions&rdquo;</div>
+            <div class="real"><span class="mono">Why it fits</span>Names the problem of resources but not who would pay or how.</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="eval">
+      <div class="sec-head">
+        <span class="mono">Source Evaluation</span>
+        <h2>How far can we trust these answers?</h2>
+        <p>We checked our survey answers against four tests: are they relevant, reliable, sufficient and free of bias.</p>
+      </div>
+      <div class="eval">
+        <article class="crit">
+          <header><h3>Relevant</h3><span class="verdict ok">Mostly relevant</span></header>
+          <p class="q">Do the answers speak to the question of free tuition for struggling students?</p>
+          <ul>
+            <li>Every question was written for the exhibition track, and most answers address it directly.</li>
+            <li>The three groups are the people free tuition would affect: students who attend, teachers who run it and parents who live with the results.</li>
+            <li>Some answers drift. One teacher answered the cost question with "students can find their teachers in the teacher room or lounge during recess or after school".</li>
+          </ul>
+          <p class="fix">To improve: keep each answer tied to its question and ask a follow-up when it drifts.</p>
+        </article>
+        <article class="crit">
+          <header><h3>Reliable</h3><span class="verdict warn">Opinions, not proof</span></header>
+          <p class="q">Can we trust what respondents told us, and can it be checked?</p>
+          <ul>
+            <li>The answers are first-hand views from people who know the situation, so they are good evidence of what people think and experience.</li>
+            <li>Facts inside the answers are unchecked. A student said free tuition "can decrease the rate of dropouts", with no source.</li>
+            <li>Our three secondary sources (Stanford NSSA, J-PAL and Education Research for Action) can be used to test claims like this.</li>
+          </ul>
+          <p class="fix">To improve: compare each factual claim with a secondary source before we repeat it.</p>
+        </article>
+        <article class="crit">
+          <header><h3>Sufficient</h3><span class="verdict warn">Not enough alone</span></header>
+          <p class="q">Is there enough evidence to reach a conclusion?</p>
+          <ul>
+            <li>We have 9 responses, 3 from each group.</li>
+            <li>With so few, one person changes the picture a lot. Teachers split 1 to 2 on extra expenses.</li>
+            <li>The answers show themes worth exploring. They cannot show what most students, teachers or parents think.</li>
+          </ul>
+          <p class="fix">To improve: survey more people in each group and add schools from different areas.</p>
+        </article>
+        <article class="crit">
+          <header><h3>Bias</h3><span class="verdict warn">Bias possible</span></header>
+          <p class="q">Could anything have pushed the answers one way?</p>
+          <ul>
+            <li>Self-interest: students gain free help, parents save money and teachers take on more work, and each answer reflects that.</li>
+            <li>Question wording: asking whether free tuition could create "unnecessary expenses" leans toward a yes.</li>
+            <li>Who we asked: we have not recorded how respondents were chosen, so the sample may be people close to us who share similar views.</li>
+          </ul>
+          <p class="fix">To improve: use neutral wording, choose respondents more randomly and say how they were chosen.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="vote">
+      <div class="sec-head">
+        <span class="mono">Voting Box</span>
+        <h2>Where do you stand?</h2>
+      </div>
+      <div class="vote">
+        <div>
+          <h3>Should school give free tuition for struggling students?</h3>
+          <div class="opts" id="opts"></div>
+          <p class="note" id="note" aria-live="polite"></p>
+        </div>
+        <div class="results" id="results" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="method">
+      <div class="sec-head">
+        <span class="mono">How we researched it</span>
+        <h2>Method, sources and AI use</h2>
+      </div>
+      <div class="method">
+        <div class="card">
+          <h3>Primary method: Survey</h3>
+          <p>One survey with five questions each for students, teachers and parents. Three meaningful perspectives: Students, Teachers and Parents.</p>
+        </div>
+        <div class="card">
+          <h3>AI use</h3>
+          <ul>
+            <li>Research-question refinement</li>
+            <li>Perspective discovery</li>
+            <li>Research design critique</li>
+            <li>Analysis challenge</li>
+          </ul>
+        </div>
+        <div class="card" style="grid-column: 1 / -1;">
+          <h3>Three credible secondary sources</h3>
+          <ul>
+            <li><a href="https://nssa.stanford.edu/briefs/types-of-tutoring" target="_blank" rel="noopener">Types of tutoring (Stanford NSSA)</a></li>
+            <li><a href="https://www.povertyactionlab.org/evidence-effect/tutoring-programs-lead-to-learning-improvements" target="_blank" rel="noopener">Tutoring programs lead to learning improvements (J-PAL)</a></li>
+            <li><a href="https://edresearchforaction.org/research-briefs/design-principles-for-accelerating-student-learning-with-high-impact-tutoring/" target="_blank" rel="noopener">Design principles for accelerating student learning with high-impact tutoring (Education Research for Action)</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>ALSGLC · Should school give free tuition for struggling students?</span>
+      <span>Survey of students, teachers and parents</span>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function () {
+  var QUESTIONS = {
+    students: [
+      "Do you think struggling students would benefit from having free tuition provided by their school? Why?",
+      "Have you ever experienced difficulties accessing extra tuition or academic support outside school?",
+      "What would encourage you to attend free tuition sessions organised by your school?",
+      "Do you think attending additional tuitions after normal school hours would affect your time for homework, hobbies and rest?",
+      "Do you think free tuition should be available to all struggling students regardless of their family's financial background? Why?"
+    ],
+    teachers: [
+      "Do you think free tuition benefits every student equally?",
+      "Could students face difficulties balancing school, tuition and personal responsibilities?",
+      "Have you considered the additional workload teachers might experience?",
+      "To what extent could schools utilise existing classrooms and teaching staff to minimise the costs of providing free tuition?",
+      "Could providing free tuition to everyone create unnecessary expenses?"
+    ],
+    parents: [
+      "In your opinion, what criteria should schools use to determine which students receive free tuition?",
+      "Would you have any concerns about your child attending additional tuition sessions after regular school hours?",
+      "Do you think free tuition could help your child overcome academic difficulties? Why or why not?",
+      "What would you expect schools to provide to ensure their free tuition programmes are effective?",
+      "How would free tuition provided by schools affect your family's spending on your child's education?"
+    ]
+  };
+  var ANSWERS = {
+    students: [
+      ["Yes, because it offers targeted support in a familiar environment without adding a financial burden",
+       "Yes, the high costs and scheduling conflicts is the primary obstacles. Private tutoring can be very expensive, and finding an available, qualified tutor whose schedule aligns with extracurricular activities or transport arrangements is often challenging",
+       "Scheduling them immediately after school hours, rather than late at night or on weekends",
+       "Yes, it reduce personal time unless managed carefully",
+       "Yes, academic support should be based purely on educational need rather than income level to ensure equal learning opportunities"],
+      ["Yes, it provide them more education without paying",
+       "Sometimes, there's barely any free time to do other activities or rest",
+       "It's free and it provides me knowledge",
+       "Yes as it takes your time for you to study more",
+       "I believe it should be free for everyone but I believe schools wouldnt agree as it takes school resources to do tuitions"],
+      ["Yes, it can decrease the rate of dropouts in schools",
+       "No i dont",
+       "Provide meals for us, so that we won't have to spend time preparing it ourselves",
+       "Yes, it will affect our time for after school activities",
+       "Yes, so they can have equal opportunity for the struggling students"]
+    ],
+    teachers: [
+      ["yes, because same education",
+       "yes, because of their time management",
+       "no, because teachers is teaching and not giving work that he has to burden him",
+       "yes, because they use lounge for 30 minutes free tuition",
+       "yes, because of their electricity bills"],
+      ["yes, because every students come for the tuition for different reasons",
+       "yes, because time management",
+       "yes, because of time limitations.",
+       "yes, using different ways to teach",
+       "no, the only unecessary expenses are transportation"],
+      ["yes, everyone will have same opportunity because its free",
+       "depends on their time management, but students confirm will have less rest",
+       "yes, because teachers have to do their own work at home as well",
+       "students can find their teachers in the teacher room or lounge during recess or after school",
+       "no since they already have the materials for it"]
+    ],
+    parents: [
+      ["Schools should prioritize low-income households and students with proven academic gaps so resources reach those who need them most.",
+       "Student burnout from a long school day and transportation issues getting home late are my main worries.",
+       "Schools should provide small class sizes, structured practice materials, and a short snack break before sessions start.",
+       "Yes, because school teachers already know the syllabus and can target the exact foundational topics a student missed.",
+       "It would cut monthly private tuition costs, freeing up money for books, internet access, or basic household needs."],
+      ["Schools should use diagnostic assessments alongside student attendance and commitment, ensuring spots go to struggling learners who will actually show up and put in the effort.",
+       "I would worry about it clashing with extracurriculars or family dinner time, reducing quality family bonding and non-academic hobbies.",
+       "Schools should provide qualified subject specialists, clear learning targets, and a safe, quiet study environment with proper supervision until pickup.",
+       "Yes, especially when paired with peer-group learning, as working alongside classmates facing similar struggles reduces embarrassment and keeps students motivated.",
+       "It would relieve financial pressure on parents, letting us redirect funds toward long-term education savings or school supplies instead of outside tutoring."],
+      ["Schools should look at both a family's financial struggles and whether a child is falling behind in class, because every kid deserves a fair chance to catch up.",
+       "My biggest worry would be my child getting overtired, hungry, and burned out after a long school day, as well as making sure they have a safe way to get home.",
+       "Yes, because a smaller, more supportive group would give my child the confidence to ask questions without feeling shy in front of a huge class.",
+       "I would expect small class sizes, patient teachers who explain things in new ways, and a quick snack break so the kids can actually focus.",
+       "It would take a huge weight off our monthly budget and let us put that extra money toward good books, healthy food, and other things our kids need to grow."]
+    ]
+  };
+  var GROUPS = [
+    { id: "students", label: "Students", one: "Student" },
+    { id: "teachers", label: "Teachers", one: "Teacher" },
+    { id: "parents", label: "Parents", one: "Parent" }
+  ];
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  /* ---- perspectives ---- */
+  var tabsEl = document.querySelector(".tabs");
+  var qaEl = document.getElementById("qa");
+  var current = "students";
+  try { var h = location.hash.replace("#", ""); } catch (e) {}
+
+  function renderQA() {
+    var g = GROUPS.filter(function (x) { return x.id === current; })[0];
+    qaEl.textContent = "";
+    qaEl.setAttribute("aria-labelledby", "tab-" + current);
+    QUESTIONS[current].forEach(function (q, qi) {
+      var item = el("div", "qa-item");
+      var h3 = el("h3");
+      h3.appendChild(el("span", "qn", "Q" + (qi + 1)));
+      h3.appendChild(document.createTextNode(q));
+      item.appendChild(h3);
+      var row = el("div", "answers");
+      ANSWERS[current].forEach(function (resp, ri) {
+        var a = el("div", "ans");
+        a.appendChild(el("span", "mono", g.one + " " + (ri + 1)));
+        a.appendChild(el("p", null, resp[qi]));
+        row.appendChild(a);
+      });
+      item.appendChild(row);
+      qaEl.appendChild(item);
+    });
+    Array.prototype.forEach.call(tabsEl.children, function (b) {
+      b.setAttribute("aria-selected", b.dataset.id === current ? "true" : "false");
+      b.tabIndex = b.dataset.id === current ? 0 : -1;
+    });
+  }
+  GROUPS.forEach(function (g) {
+    var b = el("button", "tab", g.label);
+    b.type = "button"; b.id = "tab-" + g.id; b.dataset.id = g.id;
+    b.setAttribute("role", "tab");
+    b.appendChild(el("small", null, "n=3"));
+    b.addEventListener("click", function () { current = g.id; renderQA(); });
+    b.addEventListener("keydown", function (e) {
+      var i = GROUPS.indexOf(g);
+      if (e.key === "ArrowRight") i = (i + 1) % 3; else if (e.key === "ArrowLeft") i = (i + 2) % 3; else return;
+      current = GROUPS[i].id; renderQA(); document.getElementById("tab-" + current).focus();
+    });
+    tabsEl.appendChild(b);
+  });
+  renderQA();
+
+  /* ---- voting box ---- */
+  var OPTIONS = [
+    { id: "all", label: "Yes, for every struggling student" },
+    { id: "need", label: "Yes, but prioritise families who need it most" },
+    { id: "no", label: "No" }
+  ];
+  var optsEl = document.getElementById("opts");
+  var resEl = document.getElementById("results");
+  var noteEl = document.getElementById("note");
+  var counts = { all: 0, need: 0, no: 0 };
+  var mine = null;
+  var live = false;       // shared tally connected
+  var canWrite = true;
+  var myId = null;
+  var dbRef = null;
+
+  try { mine = localStorage.getItem("alsglc-vote"); if (!OPTIONS.some(function (o) { return o.id === mine; })) mine = null; } catch (e) { mine = null; }
+
+  OPTIONS.forEach(function (o, i) {
+    var b = el("button", "opt");
+    b.type = "button"; b.id = "opt-" + o.id; b.dataset.id = o.id;
+    b.appendChild(el("span", "mark", String.fromCharCode(65 + i)));
+    b.appendChild(el("span", null, o.label));
+    b.addEventListener("click", function () { cast(o.id); });
+    optsEl.appendChild(b);
+  });
+
+  function renderVote() {
+    Array.prototype.forEach.call(optsEl.children, function (b) {
+      b.setAttribute("aria-pressed", b.dataset.id === mine ? "true" : "false");
+    });
+    var shown = { all: counts.all, need: counts.need, no: counts.no };
+    if (!live && mine) shown[mine] = 1;
+    var total = shown.all + shown.need + shown.no;
+    resEl.textContent = "";
+    OPTIONS.forEach(function (o) {
+      var row = el("div", "bar-row");
+      var lab = el("div", "lab");
+      lab.appendChild(el("span", null, o.label));
+      var pct = total ? Math.round(shown[o.id] / total * 100) : 0;
+      lab.appendChild(el("span", null, shown[o.id] + " · " + pct + "%"));
+      var tr = el("div", "track");
+      var f = el("div", "fill" + (o.id === mine ? " mine" : ""));
+      f.style.width = pct + "%";
+      tr.appendChild(f);
+      row.appendChild(lab); row.appendChild(tr);
+      resEl.appendChild(row);
+    });
+    resEl.appendChild(el("p", "total", total + (total === 1 ? " vote" : " votes") + (live ? " from all visitors" : " on this device")));
+    if (mine) {
+      noteEl.textContent = live || !canWrite
+        ? (canWrite ? "Your vote is in. Pick another option to change it." : "Your vote is saved on this device. Pick another option to change it.")
+        : "Your vote is saved on this device. Pick another option to change it.";
+    } else {
+      noteEl.textContent = "Choose one option to see the results.";
+    }
+  }
+
+  function cast(id) {
+    mine = id;
+    try { localStorage.setItem("alsglc-vote", id); } catch (e) {}
+    if (dbRef && myId && canWrite) {
+      dbRef.doc("votes/" + myId).set({ choice: id, at: Date.now() }).catch(function () {
+        canWrite = false; live = false; renderVote();
+      });
+    }
+    renderVote();
+  }
+  renderVote();
+
+  /* shared tally, when this viewer can reach the database */
+  function connect() {
+    if (!window.claude || !window.claude.use) return;
+    Promise.all([window.claude.use("db"), window.claude.use("user")]).then(function (r) {
+      var db = r[0], user = r[1];
+      if (!db) return;
+      var idP = user && user.id ? user.id() : Promise.resolve(null);
+      var canP = user && user.can ? Promise.resolve(user.can("data.write")) : Promise.resolve(null);
+      Promise.all([idP, canP]).then(function (v) {
+        myId = v[0] ? String(v[0]).replace(/[^A-Za-z0-9_\-.~:@+]/g, "_") : null;
+        if (!myId || v[1] === false) canWrite = false;
+        dbRef = db;
+        db.collection("votes").onSnapshot(function (snap) {
+          var c = { all: 0, need: 0, no: 0 };
+          snap.docs.forEach(function (d) {
+            var data = d.data() || {};
+            if (c.hasOwnProperty(data.choice)) c[data.choice]++;
+            if (myId && d.id === myId && c.hasOwnProperty(data.choice)) {
+              mine = data.choice;
+              try { localStorage.setItem("alsglc-vote", mine); } catch (e) {}
+            }
+          });
+          counts = c; live = true; renderVote();
+          // carry over a vote made on this device before connecting
+          if (mine && canWrite && myId && !snap.docs.some(function (d) { return d.id === myId; })) {
+            db.doc("votes/" + myId).set({ choice: mine, at: Date.now() }).catch(function () { canWrite = false; });
+          }
+        }, function () { live = false; renderVote(); });
+      });
+    }).catch(function () {});
+  }
+  connect();
+})();
+</script>
+
+</body></html>
